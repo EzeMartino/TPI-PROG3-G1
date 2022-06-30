@@ -1,6 +1,6 @@
-using InformacionCiudades.API;
-using InformacionCiudades.API.DBContexts;
-using InformacionCiudades.API.Services;
+using Contents.API;
+using Contents.API.DBContexts;
+using Contents.API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(setupAction =>
 {
-    setupAction.AddSecurityDefinition("InfoCiudadesApiBearerAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme() //Esto va a permitir usar swagger con el token.
+    setupAction.AddSecurityDefinition("contentsApiBearerAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme() //Esto va a permitir usar swagger con el token.
     {
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
         Scheme = "Bearer",
@@ -30,17 +30,17 @@ builder.Services.AddSwaggerGen(setupAction =>
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
-                    Id = "InfoCiudadesApiBearerAuth" } //Tiene que coincidir con el id seteado arriba en la definición
+                    Id = "contentsApiBearerAuth" } //Tiene que coincidir con el id seteado arriba en la definición
                 }, new List<string>() }
     });
 });
 
-builder.Services.AddSingleton<CiudadesData>();
+builder.Services.AddSingleton<ContentsData>();
 
-builder.Services.AddDbContext<InformacionCiudadesContext>(dbContextOptions => dbContextOptions.UseSqlite(
-    builder.Configuration["ConnectionStrings:InfoCiudadesDBConnectionString"]));
+builder.Services.AddDbContext<ContentContext>(dbContextOptions => dbContextOptions.UseSqlite(
+    builder.Configuration["ConnectionStrings:ContentsDBConnectionString"]));
 
-builder.Services.AddScoped<IInfoCiudadesRepository, InfoCiudadesRepository>();
+builder.Services.AddScoped<IContentRepository, ContentRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace InformacionCiudades.API.Controllers
+namespace Contents.API.Controllers
 {
     [Route("api/authentication")] //Especificamos un path de login
     [ApiController]

@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "InformacionCiudades.API": {
+    "Contents.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

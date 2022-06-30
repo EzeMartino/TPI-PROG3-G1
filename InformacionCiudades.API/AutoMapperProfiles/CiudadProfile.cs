@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 
-namespace InformacionCiudades.API.AutoMapperProfiles
+namespace Contents.API.AutoMapperProfiles
 {
-    public class CiudadProfile : Profile
+    public class ContentProfile : Profile
     {
-        public CiudadProfile()
+        public ContentProfile()
         {
-            CreateMap<Entities.Ciudad, Models.CiudadSinPuntosDeInteresDto>();
-            CreateMap<Entities.Ciudad, Models.CiudadDto>();
+            CreateMap<Entities.Content, Models.ContentDto>();
+            CreateMap<Entities.Content, Models.ContentCreationDto>();
+            CreateMap<Entities.Content, Models.ContentUpdateDto>();
         }
     }
 }
