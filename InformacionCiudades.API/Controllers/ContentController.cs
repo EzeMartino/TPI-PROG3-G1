@@ -8,7 +8,7 @@ namespace Contents.API.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("api/ciudades")]
+    [Route("api/contents")]
     public class ContentController : ControllerBase
     {
         //private readonly CiudadesData _ciudadesData;
@@ -44,7 +44,7 @@ namespace Contents.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCiudad(int id) //Ahora devolvemos un IActionResult para que sea más genérico, ya que ahora podemos devolver CiudadDto o CiudadSinPuntosDeInteresDto
+        public IActionResult GetContent(int id) //Ahora devolvemos un IActionResult para que sea más genérico, ya que ahora podemos devolver CiudadDto o CiudadSinPuntosDeInteresDto
                                                                                     //incluirPuntosDeInteres se envía como parámetro en la url al final de la misma de la siguiente manera /api/ciudades/1?incluirPuntosDeInteres=true
         {
             var content = _contentRepository.GetContent(id);

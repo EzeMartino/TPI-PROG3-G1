@@ -1,12 +1,13 @@
-﻿using Contents.API.Entities;
+﻿using Contents.API.DBContexts.Config;
+using Contents.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contents.API.DBContexts
 {
     public class ContentContext : DbContext
     {
-        public DbSet<Content> Contents { get; set; } 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public ContentContext(DbContextOptions<ContentContext> options) : base(options) //Acá estamos llamando al constructor de DbContext que es el que acepta las opciones
         {
@@ -15,17 +16,26 @@ namespace Contents.API.DBContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Ciudad>().HasMany(c => c.PuntosDeInteres).WithOne(p => p.Ciudad).HasForeignKey(c => c.CiudadId);
+
+            new ContentConfig(modelBuilder.Entity<Content>());
+            new UserConfig(modelBuilder.Entity<User>());
 
             var contents = new Content[3]
             {
-                new Content("Peaky Blinders", 36, "Muy picante", new Category("Serie")),
-                new Content("The Walking Dead", 80, "Atrapante", new Category("Serie")),
-                new Content("Movie Dick", 361, "buena pelicula", new Category("Pelicula"))
+                new Content("Peaky Blinders", 36, "Muy picante", "Serie")
+                {
+                    Id=1,
+                },
+                new Content("The Walking Dead", 80, "Atrapante", "Serie")
+                {
+                    Id=2,
+                },
+                new Content("Movie Dick", 361, "buena pelicula", "Pelicula")
+                {
+                    Id=3,
+                }
             };
             modelBuilder.Entity<Content>().HasData(contents);
-
-
             base.OnModelCreating(modelBuilder);
         }
     }

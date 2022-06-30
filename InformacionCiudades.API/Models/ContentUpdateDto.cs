@@ -12,6 +12,6 @@ namespace Contents.API.Models
         public string? Comment { get; set; }
         [MaxLength(int.MaxValue)]
         public int Duration { get; set; }
-        public Category Category { get; set; }
+        public string Category { get; set; }
     }
 }

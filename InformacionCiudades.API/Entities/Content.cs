@@ -17,9 +17,9 @@ namespace Contents.API.Entities
         [MaxLength(200)]
         public string? Comment { get; set; }
 
-        public Category Category { get; set; } 
+        public string Category { get; set; } 
 
-        public Content(string title, int duration, string comment, Category category)
+        public Content(string title, int duration, string comment, string category)
         {
             Title = title.Trim();
             Duration = duration;

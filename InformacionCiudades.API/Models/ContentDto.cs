@@ -8,7 +8,7 @@ public class ContentDto
     public string? Comment { get; set; }
     public int Duration { get; set; }
 
-    public Category Category { get; set; } //Lo seteamos a una nueva colección para evitar que retorne un null en algún momento de la ejecución.
+    public string Category { get; set; } //Lo seteamos a una nueva colección para evitar que retorne un null en algún momento de la ejecución.
 
 }
 
