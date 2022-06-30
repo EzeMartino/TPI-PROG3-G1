@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repositorios\\TPI\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj": {}
+    "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj": {}
   },
   "projects": {
-    "C:\\Repositorios\\TPI\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj": {
+    "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repositorios\\TPI\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj",
+        "projectUniqueName": "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj",
         "projectName": "InformacionCiudades.API",
-        "projectPath": "C:\\Repositorios\\TPI\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj",
-        "packagesPath": "C:\\Users\\ezeqf\\.nuget\\packages\\",
-        "outputPath": "C:\\Repositorios\\TPI\\TPI-PROG3-G1\\InformacionCiudades.API\\obj\\",
+        "projectPath": "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\InformacionCiudades.API.csproj",
+        "packagesPath": "C:\\Users\\sacri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ezeqf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sacri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

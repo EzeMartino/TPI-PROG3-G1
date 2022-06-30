@@ -6,7 +6,7 @@ namespace InformacionCiudades.API
     {
         public List<CiudadDto> Ciudades { get; set; }
 
-        //public static CiudadesData InstanciaActual { get; } = new CiudadesData();
+        public static CiudadesData InstanciaActual { get; } = new CiudadesData();
 
         public CiudadesData()
         {
