@@ -13,6 +13,34 @@ namespace Contents.API.Services
         {
             _context = context;
         }
+
+        public IEnumerable<User> GetUsers()
+        {
+            return _context.Users.OrderBy(x => x.Id).ToList();
+        }
+        public User? GetUser(int idUser)
+        {
+            return _context.Users.Where(u => u.Id == idUser).FirstOrDefault();
+        }
+
+        public void CreateUser(User user)
+        {
+            _context.Users.Add(user);
+        }
+
+        public void DeleteUser(int idUser)
+        {
+            if (GetUser(idUser) == null)
+            {
+                throw new ArgumentException("Content nof found");
+            }
+            else
+            {
+                _context.Users.Remove(GetUser(idUser));
+            }
+
+        }
+
         public Content? GetContent(int idContent)
         {
             return _context.Contents.Where(c => c.Id == idContent).FirstOrDefault();
@@ -44,6 +72,19 @@ namespace Contents.API.Services
                 _context.Contents.Remove(GetContent(idContent));
             }
             
+        }
+        public bool ExisteUser(int idUser)
+        {
+            return _context.Users.Any(c => c.Id == idUser);
+        }
+
+        public void AgregarContentAUser(int idUser, Content content)
+        {
+            var user = GetUser(idUser);
+            if(user != null)
+            {
+                user.Contents.Add(content);
+            }
         }
 
     }

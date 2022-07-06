@@ -19,29 +19,23 @@ namespace Contents.API.Entities
 
         [MaxLength(200)]
         public string? Comment { get; set; }
-<<<<<<< HEAD
-        [Required]
-        public string Category { get; set; } 
-=======
 
 
         [Required]
         public int Rating { get; set; }
 
+        [ForeignKey("UserId")]
         public User? User { get; set; }
         
         public int UserId { get; set; }
 
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
-
->>>>>>> a3a54b705612e16dbc04bce01b2bc96d3fe3916c
-
-        public Content(string title, int duration, string comment, string category)
+        public Content(string title, int duration, string comment, string category, int rating)
         {
             Title = title.Trim();
             Duration = duration;
             Comment = comment;
             Category = category;
+            Rating = rating;
         }
     }
 }

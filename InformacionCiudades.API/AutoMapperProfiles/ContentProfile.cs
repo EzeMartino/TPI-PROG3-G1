@@ -9,8 +9,6 @@ namespace Contents.API.AutoMapperProfiles
         public ContentProfile()
         {
             CreateMap<Content, ContentDto>();
-            CreateMap<Content, ContentCreationDto>();
-            CreateMap<Content, ContentUpdateDto>();
             CreateMap<ContentCreationDto, Content>();
             CreateMap<ContentDto, Content>();
             CreateMap<ContentUpdateDto, Content>();

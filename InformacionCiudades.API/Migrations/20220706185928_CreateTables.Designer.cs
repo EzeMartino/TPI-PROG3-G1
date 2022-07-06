@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Contents.API.Migrations
 {
     [DbContext(typeof(ContentContext))]
-    [Migration("20220630232953_AddCreateTables")]
-    partial class AddCreateTables
+    [Migration("20220706185928_CreateTables")]
+    partial class CreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,12 +35,20 @@ namespace Contents.API.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Contents");
 
@@ -48,26 +56,32 @@ namespace Contents.API.Migrations
                         new
                         {
                             Id = 1,
-                            Category = "Serie",
-                            Comment = "Muy picante",
-                            Duration = 36,
-                            Title = "Peaky Blinders"
+                            Category = "Category 1",
+                            Comment = "Comment 1",
+                            Duration = 12,
+                            Rating = 5,
+                            Title = "Title 1",
+                            UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Category = "Serie",
-                            Comment = "Atrapante",
-                            Duration = 80,
-                            Title = "The Walking Dead"
+                            Category = "Category 2",
+                            Comment = "Comment 2",
+                            Duration = 12,
+                            Rating = 6,
+                            Title = "Title 2",
+                            UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Category = "Pelicula",
-                            Comment = "buena pelicula",
-                            Duration = 361,
-                            Title = "Movie Dick"
+                            Category = "Category 3",
+                            Comment = "Comment 3",
+                            Duration = 12,
+                            Rating = 7,
+                            Title = "Title 3",
+                            UserId = 3
                         });
                 });
 
@@ -95,6 +109,45 @@ namespace Contents.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "email1@email.com",
+                            Password = "password1",
+                            Username = "User 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "email2@email.com",
+                            Password = "password2",
+                            Username = "User 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "email3@email.com",
+                            Password = "password3",
+                            Username = "User 3"
+                        });
+                });
+
+            modelBuilder.Entity("Contents.API.Entities.Content", b =>
+                {
+                    b.HasOne("Contents.API.Entities.User", "User")
+                        .WithMany("Contents")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Contents.API.Entities.User", b =>
+                {
+                    b.Navigation("Contents");
                 });
 #pragma warning restore 612, 618
         }
