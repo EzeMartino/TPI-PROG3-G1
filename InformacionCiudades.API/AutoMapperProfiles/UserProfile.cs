@@ -11,6 +11,7 @@ namespace Contents.API.AutoMapperProfiles
             CreateMap<User, UserDto>();
             CreateMap<User, UserCreationDto>();
             CreateMap<User, UserWithoutContentsDto>();
+            CreateMap<UserCreationDto, User>();
         }
     }
 }

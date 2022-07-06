@@ -30,7 +30,7 @@ namespace Contents.API.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetContent")]
         public IActionResult GetContent(int id) //Ahora devolvemos un IActionResult para que sea más genérico, ya que ahora podemos devolver CiudadDto o CiudadSinPuntosDeInteresDto
                                                                                     //incluirPuntosDeInteres se envía como parámetro en la url al final de la misma de la siguiente manera /api/ciudades/1?incluirPuntosDeInteres=true
         {
@@ -59,7 +59,7 @@ namespace Contents.API.Controllers
             _contentRepository.SaveChanges();
 
             var contentToReturn = _mapper.Map<ContentDto>(newContent);
-            return CreatedAtRoute("GetContent", new {idUser, idContent=contentToReturn.Id},contentToReturn);
+            return CreatedAtRoute("GetContent", new {id = contentToReturn.Id}, contentToReturn);
         }
     }
 }
