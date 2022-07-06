@@ -65,13 +65,10 @@ namespace Contents.API.Services
         public void DeleteContent(int idContent)
         {
             if (GetContent(idContent) == null)
-            {
                 throw new ArgumentException("Content nof found");
-            } else
-            {
-                _context.Contents.Remove(GetContent(idContent));
-            }
-            
+
+            _context.Contents.Remove(GetContent(idContent));
+
         }
         public bool UserExists(int idUser)
         {
@@ -92,5 +89,9 @@ namespace Contents.API.Services
             return _context.Contents.Where(c => c.UserId == idUser && c.Id == idContent).FirstOrDefault();
         }
 
+        public bool ContentExists(int idContent)
+        {
+            return _context.Contents.Any(c => c.Id == idContent);
+        }
     }
 }

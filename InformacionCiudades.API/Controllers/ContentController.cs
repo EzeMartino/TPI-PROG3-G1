@@ -54,7 +54,7 @@ namespace Contents.API.Controllers
                 return BadRequest();
             }
             var newContent = _mapper.Map<Content>(contentRequestBody);
-            _contentRepository.AddContentToAUser(idUser, newContent);
+            _contentRepository.AddContentToUser(idUser, newContent);
             _contentRepository.CreateContent(newContent);
             _contentRepository.SaveChanges();
 
@@ -73,6 +73,22 @@ namespace Contents.API.Controllers
                 return NotFound();
 
             _mapper.Map(content, contentInDB);
+            _contentRepository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{idContent}")]
+        public ActionResult DeleteContent(int idContent)
+        {
+            if (!_contentRepository.ContentExists(idContent))
+                return NotFound();
+
+            var contentToEliminate = _contentRepository.GetContent(idContent);
+            if (contentToEliminate is null)
+                return NotFound();
+
+            _contentRepository.DeleteContent(contentToEliminate.Id);
             _contentRepository.SaveChanges();
 
             return NoContent();

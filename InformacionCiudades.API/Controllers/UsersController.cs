@@ -67,5 +67,19 @@ namespace Contents.API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{idUser}")]
+        public ActionResult DeleteUser(int idUser)
+        {
+            if (!_contentRepository.UserExists(idUser))
+                return NotFound();
+            var userToDelete = _contentRepository.GetUser(idUser);
+            if (userToDelete is null)
+                return NotFound();
+            _contentRepository.DeleteUser(userToDelete.Id);
+            _contentRepository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

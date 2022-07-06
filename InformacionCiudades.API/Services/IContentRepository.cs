@@ -14,11 +14,16 @@ namespace Contents.API.Services
         public Content? GetContent(int idContent);
         public void CreateContent(Content content);
         public bool SaveChanges();
+        public void DeleteUser(int idUser);
+
         public void DeleteContent(int idContent);
         public bool UserExists(int idUser);
         public void AddContentToUser(int idUser, Content content);
 
         public Content? GetContentInUser(int idUser, int idContent);
 
+        public bool ContentExists(int idContent);
+
     }
+
 }
