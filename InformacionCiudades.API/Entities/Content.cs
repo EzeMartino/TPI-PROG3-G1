@@ -14,10 +14,21 @@ namespace Contents.API.Entities
         [Required]
         public int Duration { get; set; }
 
+        public string Category { get; set; }
+
         [MaxLength(200)]
         public string? Comment { get; set; }
 
-        public string Category { get; set; } 
+
+        [Required]
+        public int Rating { get; set; }
+
+        public User? User { get; set; }
+        
+        public int UserId { get; set; }
+
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+
 
         public Content(string title, int duration, string comment, string category)
         {

@@ -17,6 +17,8 @@ namespace Contents.API.Entities
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
+
+        public List<Content> Contents { get; set; } = new List<Content>();
         public User(string username, string password, string email)
         {
             Username = username;
