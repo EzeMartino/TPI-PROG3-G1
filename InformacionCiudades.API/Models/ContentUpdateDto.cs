@@ -8,11 +8,17 @@ namespace Contents.API.Models
         [Required(ErrorMessage = "Agregá un titulo")]
         [MaxLength(50)]
         public string Title { get; set; } = string.Empty;
-        [MaxLength(200)]
-        public string? Comment { get; set; }
-        public int Rating { get; set; }
+        
+        
+        [Required]
         [MaxLength(int.MaxValue)]
         public int Duration { get; set; }
+        [Required]
         public string Category { get; set; }
+        [Required]
+        [MaxLength(200)]
+        public string? Comment { get; set; }
+        [Required]
+        public int Rating { get; set; }
     }
 }

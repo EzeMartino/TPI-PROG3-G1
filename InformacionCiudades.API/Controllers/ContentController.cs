@@ -38,6 +38,7 @@ namespace Contents.API.Controllers
             if (content == null)
                 return NotFound();
 
+
             return Ok(_mapper.Map<ContentDto>(content));
         }
         [HttpPost]
@@ -48,7 +49,7 @@ namespace Contents.API.Controllers
                 return NotFound();
             }
             
-            if (contentRequestBody.Title == null || contentRequestBody.Title == "" || contentRequestBody.Duration == null || contentRequestBody.Duration == 0 || contentRequestBody.Comment == null || contentRequestBody.Comment == "" || contentRequestBody.Category == null)
+            if (contentRequestBody.Title == "" || contentRequestBody.Title == "" || contentRequestBody.Duration == 0 || contentRequestBody.Comment == "" || contentRequestBody.Comment == "" || contentRequestBody.Category == "")
             {
                 return NotFound();
             }
@@ -58,7 +59,7 @@ namespace Contents.API.Controllers
             _contentRepository.SaveChanges();
 
             var contentToReturn = _mapper.Map<ContentDto>(newContent);
-            return CreatedAtRoute("CreateContent", new {idUser, idContent=contentToReturn.Id},contentToReturn);
+            return CreatedAtRoute("GetContent", new {idUser, idContent=contentToReturn.Id},contentToReturn);
         }
     }
 }
