@@ -16,7 +16,7 @@ namespace Contents.API.Services
         public bool SaveChanges();
         public void DeleteContent(int idContent);
         public bool UserExists(int idUser);
-        public void AddContentToAUser(int idUser, Content content);
+        public void AddContentToUser(int idUser, Content content);
 
         public Content? GetContentInUser(int idUser, int idContent);
 

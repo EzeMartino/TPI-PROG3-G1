@@ -78,7 +78,7 @@ namespace Contents.API.Services
             return _context.Users.Any(c => c.Id == idUser);
         }
 
-        public void AddContentToAUser(int idUser, Content content)
+        public void AddContentToUser(int idUser, Content content)
         {
             var user = GetUser(idUser);
             if(user != null)
