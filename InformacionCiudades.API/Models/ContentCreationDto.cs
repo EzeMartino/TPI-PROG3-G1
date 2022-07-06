@@ -7,11 +7,14 @@ namespace Contents.API.Models
     {
         [Required(ErrorMessage = "Agregá un titulo")]
         [MaxLength(50)]
-        public string Title { get; set; } = string.Empty;
+        public string Title { get; set; }
+        [Required(ErrorMessage = "Agregá un comentario")]
         [MaxLength(200)]
-        public string? Comment { get; set; }
+        public string Comment { get; set; }
         [MaxLength(int.MaxValue)]
         public int Duration { get; set; }
+        [Required(ErrorMessage = "Agregá una categoria")]
+        [MaxLength(200)]
         public string Category { get; set; }
     }
 }

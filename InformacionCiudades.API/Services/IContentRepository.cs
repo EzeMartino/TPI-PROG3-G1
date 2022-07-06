@@ -1,4 +1,5 @@
 ﻿using Contents.API.Entities;
+using Contents.API.Models;
 
 namespace Contents.API.Services
 {
@@ -6,7 +7,8 @@ namespace Contents.API.Services
     {
         public IEnumerable<Content> GetContents();
         public Content? GetContent(int idContent);
+        public void CreateContent(Content content);
         public bool SaveChanges();
-        void DeleteContent(int idContent);
+        public void DeleteContent(int idContent);
     }
 }

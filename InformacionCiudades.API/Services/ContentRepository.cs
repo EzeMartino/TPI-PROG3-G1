@@ -1,5 +1,6 @@
 ﻿using Contents.API.DBContexts;
 using Contents.API.Entities;
+using Contents.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contents.API.Services
@@ -20,6 +21,11 @@ namespace Contents.API.Services
         public IEnumerable<Content> GetContents()
         {
             return _context.Contents.OrderBy(x => x.Title).ToList();
+        }
+
+        public void CreateContent(Content content)
+        {
+            _context.Contents.Add(content);
         }
 
 

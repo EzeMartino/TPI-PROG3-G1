@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contents.API.Entities;
 using Contents.API.Models;
 using Contents.API.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -11,13 +12,11 @@ namespace Contents.API.Controllers
     [Route("api/contents")]
     public class ContentController : ControllerBase
     {
-        //private readonly CiudadesData _ciudadesData;
         private readonly IContentRepository _contentRepository;
         private readonly IMapper _mapper;
 
         public ContentController(IContentRepository contentRepository, IMapper mapper)
         {
-            //_ciudadesData = ciudadesData;
             _contentRepository = contentRepository;
             _mapper = mapper;
         }
@@ -27,20 +26,8 @@ namespace Contents.API.Controllers
         {
             var contents = _contentRepository.GetContents();
 
-            /*var resultados = new List<CiudadSinPuntosDeInteresDto>();
-
-            foreach (var ciudad in ciudades)
-            {
-                resultados.Add(new CiudadSinPuntosDeInteresDto {
-                    Id = ciudad.Id,
-                    Descripcion = ciudad.Descripcion,
-                    Nombre = ciudad.Nombre
-                });
-            }*/ //Esto ya no lo usamos porque ahora todo ese trabajo lo hace automapper.
-
             return Ok(_mapper.Map<IEnumerable<ContentDto>>(contents));
 
-            //return Ok(_ciudadesData.Ciudades);
         }
 
         [HttpGet("{id}")]
@@ -52,6 +39,17 @@ namespace Contents.API.Controllers
                 return NotFound();
 
             return Ok(_mapper.Map<ContentDto>(content));
+        }
+        [HttpPost]
+        public IActionResult CreateContent(ContentCreationDto contentRequestBody)
+        {
+            if (contentRequestBody.Title == null || contentRequestBody.Title == "" || contentRequestBody.Duration == null || contentRequestBody.Duration == 0 || contentRequestBody.Comment == null || contentRequestBody.Comment == "" || contentRequestBody.Category == null)
+            {
+                return NotFound();
+            }
+            var content = _mapper.Map<Content>(contentRequestBody);
+            _contentRepository.CreateContent(content);
+            return CreatedAtRoute("CreateContent", content);
         }
     }
 }

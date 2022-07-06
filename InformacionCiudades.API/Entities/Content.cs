@@ -13,10 +13,11 @@ namespace Contents.API.Entities
         public string Title { get; set; }
         [Required]
         public int Duration { get; set; }
+        [Required]
 
         [MaxLength(200)]
         public string? Comment { get; set; }
-
+        [Required]
         public string Category { get; set; } 
 
         public Content(string title, int duration, string comment, string category)

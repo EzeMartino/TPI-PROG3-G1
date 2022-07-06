@@ -4,6 +4,7 @@ using Contents.API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,7 +36,6 @@ builder.Services.AddSwaggerGen(setupAction =>
     });
 });
 
-builder.Services.AddSingleton<ContentsData>();
 
 builder.Services.AddDbContext<ContentContext>(dbContextOptions => dbContextOptions.UseSqlite(
     builder.Configuration["ConnectionStrings:ContentsDBConnectionString"]));
@@ -43,6 +43,7 @@ builder.Services.AddDbContext<ContentContext>(dbContextOptions => dbContextOptio
 builder.Services.AddScoped<IContentRepository, ContentRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticación que tenemos que elegir después en PostMan para pasarle el token
     .AddJwtBearer(options => //Acá definimos la configuración de la autenticación. le decimos qué cosas queremos comprobar. La fecha de expiración se valida por defecto.

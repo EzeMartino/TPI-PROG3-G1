@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Contents.API.Entities;
+using Contents.API.Models;
 
 namespace Contents.API.AutoMapperProfiles
 {
@@ -6,8 +8,8 @@ namespace Contents.API.AutoMapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<Entities.User, Models.UserDto>();
-            CreateMap<Entities.User, Models.UserCreationDto>();
+            CreateMap<User, UserDto>();
+            CreateMap<User, UserCreationDto>();
         }
     }
 }

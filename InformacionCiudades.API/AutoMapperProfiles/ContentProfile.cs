@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Contents.API.Entities;
+using Contents.API.Models;
 
 namespace Contents.API.AutoMapperProfiles
 {
@@ -6,9 +8,12 @@ namespace Contents.API.AutoMapperProfiles
     {
         public ContentProfile()
         {
-            CreateMap<Entities.Content, Models.ContentDto>();
-            CreateMap<Entities.Content, Models.ContentCreationDto>();
-            CreateMap<Entities.Content, Models.ContentUpdateDto>();
+            CreateMap<Content, ContentDto>();
+            CreateMap<Content, ContentCreationDto>();
+            CreateMap<Content, ContentUpdateDto>();
+            CreateMap<ContentCreationDto, Content>();
+            CreateMap<ContentDto, Content>();
+            CreateMap<ContentUpdateDto, Content>();
         }
     }
 }
