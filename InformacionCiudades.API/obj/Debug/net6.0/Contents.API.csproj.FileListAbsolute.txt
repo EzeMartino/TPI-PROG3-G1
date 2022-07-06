@@ -62,3 +62,13 @@ C:\Users\sacri\OneDrive\Escritorio\UTN\3er Cuatrimestre\Programación 3\TPI-PROG
 C:\Users\sacri\OneDrive\Escritorio\UTN\3er Cuatrimestre\Programación 3\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.pdb
 C:\Users\sacri\OneDrive\Escritorio\UTN\3er Cuatrimestre\Programación 3\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.genruntimeconfig.cache
 C:\Users\sacri\OneDrive\Escritorio\UTN\3er Cuatrimestre\Programación 3\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\ref\Contents.API.dll
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.csproj.AssemblyReference.cache
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.AssemblyInfoInputs.cache
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.AssemblyInfo.cs
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.csproj.CoreCompileInputs.cache
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.dll
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\refint\Contents.API.dll
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.pdb

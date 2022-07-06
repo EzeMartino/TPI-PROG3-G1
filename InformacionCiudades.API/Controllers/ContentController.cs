@@ -41,15 +41,24 @@ namespace Contents.API.Controllers
             return Ok(_mapper.Map<ContentDto>(content));
         }
         [HttpPost]
-        public IActionResult CreateContent(ContentCreationDto contentRequestBody)
+        public ActionResult<ContentDto> CreateContent(int idUser, ContentCreationDto contentRequestBody)
         {
+            if (!_contentRepository.ExisteUser(idUser))
+            {
+                return NotFound();
+            }
+            
             if (contentRequestBody.Title == null || contentRequestBody.Title == "" || contentRequestBody.Duration == null || contentRequestBody.Duration == 0 || contentRequestBody.Comment == null || contentRequestBody.Comment == "" || contentRequestBody.Category == null)
             {
                 return NotFound();
             }
-            var content = _mapper.Map<Content>(contentRequestBody);
-            _contentRepository.CreateContent(content);
-            return CreatedAtRoute("CreateContent", content);
+            var newContent = _mapper.Map<Content>(contentRequestBody);
+            _contentRepository.AgregarContentAUser(idUser, newContent);
+            _contentRepository.CreateContent(newContent);
+            _contentRepository.SaveChanges();
+
+            var contentToReturn = _mapper.Map<ContentDto>(newContent);
+            return CreatedAtRoute("CreateContent", new {idUser, idContent=contentToReturn.Id},contentToReturn);
         }
     }
 }

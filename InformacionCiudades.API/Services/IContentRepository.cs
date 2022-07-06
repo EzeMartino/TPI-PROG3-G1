@@ -10,5 +10,9 @@ namespace Contents.API.Services
         public void CreateContent(Content content);
         public bool SaveChanges();
         public void DeleteContent(int idContent);
+        public bool ExisteUser(int idUser);
+        public void AgregarContentAUser(int idUser, Content content);
+
+
     }
 }
