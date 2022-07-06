@@ -1831,19 +1831,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sacri\\.nuget\\packages\\": {}
+    "C:\\Users\\ezeqf\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
+      "projectUniqueName": "C:\\Repositorios\\TPI\\TP-Prog3 - piola\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
       "projectName": "Contents.API",
-      "projectPath": "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
-      "packagesPath": "C:\\Users\\sacri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sacri\\OneDrive\\Escritorio\\UTN\\3er Cuatrimestre\\Programación 3\\TPI-PROG3-G1\\InformacionCiudades.API\\obj\\",
+      "projectPath": "C:\\Repositorios\\TPI\\TP-Prog3 - piola\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
+      "packagesPath": "C:\\Users\\ezeqf\\.nuget\\packages\\",
+      "outputPath": "C:\\Repositorios\\TPI\\TP-Prog3 - piola\\TPI-PROG3-G1\\InformacionCiudades.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sacri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ezeqf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

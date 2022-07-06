@@ -10,6 +10,7 @@ namespace Contents.API.Models
         public string Title { get; set; } = string.Empty;
         [MaxLength(200)]
         public string? Comment { get; set; }
+        public int Rating { get; set; }
         [MaxLength(int.MaxValue)]
         public int Duration { get; set; }
         public string Category { get; set; }
