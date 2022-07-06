@@ -51,5 +51,21 @@ namespace Contents.API.Controllers
 
             return CreatedAtRoute("GetUser", new { id = newUser.Id }, userToReturn);
         }
+
+        [HttpPut("{idUser}")]
+        public ActionResult UpdateUser(int idUser, UserCreationDto user)
+        {
+            if (!_contentRepository.UserExists(idUser))
+                return NotFound();
+
+            var userInDB = _contentRepository.GetUser(idUser);
+            if (userInDB is null)
+                return NotFound();
+
+            _mapper.Map(user, userInDB);
+            _contentRepository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

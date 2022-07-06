@@ -73,18 +73,23 @@ namespace Contents.API.Services
             }
             
         }
-        public bool ExisteUser(int idUser)
+        public bool UserExists(int idUser)
         {
             return _context.Users.Any(c => c.Id == idUser);
         }
 
-        public void AgregarContentAUser(int idUser, Content content)
+        public void AddContentToAUser(int idUser, Content content)
         {
             var user = GetUser(idUser);
             if(user != null)
             {
                 user.Contents.Add(content);
             }
+        }
+
+        public Content? GetContentInUser(int idUser, int idContent)
+        {
+            return _context.Contents.Where(c => c.UserId == idUser && c.Id == idContent).FirstOrDefault();
         }
 
     }

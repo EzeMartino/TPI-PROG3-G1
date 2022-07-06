@@ -27,13 +27,11 @@ namespace Contents.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Comment")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Duration")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
@@ -41,14 +39,9 @@ namespace Contents.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Contents");
+                    b.ToTable("Contents", (string)null);
 
                     b.HasData(
                         new
@@ -57,9 +50,7 @@ namespace Contents.API.Migrations
                             Category = "Category 1",
                             Comment = "Comment 1",
                             Duration = 12,
-                            Rating = 5,
-                            Title = "Title 1",
-                            UserId = 1
+                            Title = "Title 1"
                         },
                         new
                         {
@@ -67,9 +58,7 @@ namespace Contents.API.Migrations
                             Category = "Category 2",
                             Comment = "Comment 2",
                             Duration = 12,
-                            Rating = 6,
-                            Title = "Title 2",
-                            UserId = 2
+                            Title = "Title 2"
                         },
                         new
                         {
@@ -77,9 +66,7 @@ namespace Contents.API.Migrations
                             Category = "Category 3",
                             Comment = "Comment 3",
                             Duration = 12,
-                            Rating = 7,
-                            Title = "Title 3",
-                            UserId = 3
+                            Title = "Title 3"
                         });
                 });
 
@@ -106,7 +93,7 @@ namespace Contents.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
@@ -130,22 +117,6 @@ namespace Contents.API.Migrations
                             Password = "password3",
                             Username = "User 3"
                         });
-                });
-
-            modelBuilder.Entity("Contents.API.Entities.Content", b =>
-                {
-                    b.HasOne("Contents.API.Entities.User", "User")
-                        .WithMany("Contents")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Contents.API.Entities.User", b =>
-                {
-                    b.Navigation("Contents");
                 });
 #pragma warning restore 612, 618
         }

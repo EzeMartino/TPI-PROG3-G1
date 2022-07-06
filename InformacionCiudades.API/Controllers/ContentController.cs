@@ -44,7 +44,7 @@ namespace Contents.API.Controllers
         [HttpPost]
         public ActionResult<ContentDto> CreateContent(int idUser, ContentCreationDto contentRequestBody)
         {
-            if (!_contentRepository.ExisteUser(idUser))
+            if (!_contentRepository.UserExists(idUser))
             {
                 return NotFound();
             }
@@ -54,12 +54,28 @@ namespace Contents.API.Controllers
                 return BadRequest();
             }
             var newContent = _mapper.Map<Content>(contentRequestBody);
-            _contentRepository.AgregarContentAUser(idUser, newContent);
+            _contentRepository.AddContentToAUser(idUser, newContent);
             _contentRepository.CreateContent(newContent);
             _contentRepository.SaveChanges();
 
             var contentToReturn = _mapper.Map<ContentDto>(newContent);
             return CreatedAtRoute("GetContent", new {id = contentToReturn.Id}, contentToReturn);
+        }
+
+        [HttpPut("{idContent}")]
+        public ActionResult UpdateContent(int idUser, int idContent, ContentUpdateDto content)
+        {
+            if (!_contentRepository.UserExists(idUser))
+                return NotFound();
+
+            var contentInDB = _contentRepository.GetContentInUser(idUser, idContent);
+            if (contentInDB is null)
+                return NotFound();
+
+            _mapper.Map(content, contentInDB);
+            _contentRepository.SaveChanges();
+
+            return NoContent();
         }
     }
 }

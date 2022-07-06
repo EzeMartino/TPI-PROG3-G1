@@ -11,6 +11,8 @@ namespace Contents.API.Models
         [Required(ErrorMessage = "Agregá una contraseña")]
         [MaxLength(50)]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Ingrese su email")]
+
         public string Email { get; set; }
     }
 }

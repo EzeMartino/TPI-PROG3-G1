@@ -11,14 +11,13 @@ namespace Contents.API.Models
         
         
         [Required]
-        [MaxLength(int.MaxValue)]
         public int Duration { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Escriba una categoría válida")]
         public string Category { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Agregá un comentario")]
         [MaxLength(200)]
         public string? Comment { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Agrega un puntaje del 1 al 10")]
         public int Rating { get; set; }
     }
 }
