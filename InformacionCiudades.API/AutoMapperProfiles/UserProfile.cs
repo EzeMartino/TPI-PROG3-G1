@@ -8,6 +8,7 @@ namespace Contents.API.AutoMapperProfiles
         {
             CreateMap<Entities.User, Models.UserDto>();
             CreateMap<Entities.User, Models.UserCreationDto>();
+            CreateMap<Entities.User, Models.UserWithoutContentsDto>();
         }
     }
 }
