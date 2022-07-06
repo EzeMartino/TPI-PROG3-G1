@@ -29,7 +29,7 @@ namespace Contents.API.Controllers
             return Ok(_mapper.Map<IEnumerable<UserWithoutContentsDto>>(users));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUser")]
         public IActionResult GetUser(int id) //Ahora devolvemos un IActionResult para que sea más genérico, ya que ahora podemos devolver CiudadDto o CiudadSinPuntosDeInteresDto
         {
             var user = _contentRepository.GetUser(id);
@@ -49,7 +49,7 @@ namespace Contents.API.Controllers
 
             var userToReturn = _mapper.Map<UserDto>(newUser);
 
-            throw new Exception("a");
+            return CreatedAtRoute("GetUser", new { id = newUser.Id }, userToReturn);
         }
     }
 }

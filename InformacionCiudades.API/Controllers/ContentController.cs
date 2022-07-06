@@ -51,7 +51,7 @@ namespace Contents.API.Controllers
             
             if (contentRequestBody.Title == "" || contentRequestBody.Title == "" || contentRequestBody.Duration == 0 || contentRequestBody.Comment == "" || contentRequestBody.Comment == "" || contentRequestBody.Category == "")
             {
-                return NotFound();
+                return BadRequest();
             }
             var newContent = _mapper.Map<Content>(contentRequestBody);
             _contentRepository.AgregarContentAUser(idUser, newContent);
