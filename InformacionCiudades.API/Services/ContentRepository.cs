@@ -97,5 +97,33 @@ namespace Contents.API.Services
         {
             return _context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
         }
+
+        public int UsedTime(int userId)
+        {
+
+            IEnumerable<Content> ContentConsumed = _context.Contents.Where(c => c.UserId == userId);
+
+            int usedTime = 0;
+
+            foreach(Content c in ContentConsumed)
+            {
+                switch (c.Category)
+                {
+                    case "pelicula":
+                        usedTime += c.Duration;
+                        break;
+                    case "anime":
+                        usedTime += c.Duration * 20;
+                        break;
+                    case "serie":
+                        usedTime += c.Duration * 40;
+                        break;
+                    case "manga":
+                        usedTime += c.Duration * 4;
+                        break;
+                }
+            }
+            return usedTime;
+        }
     }
 }

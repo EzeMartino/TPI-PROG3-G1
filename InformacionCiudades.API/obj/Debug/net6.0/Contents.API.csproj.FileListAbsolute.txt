@@ -126,3 +126,4 @@ C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\De
 C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.csproj.CopyComplete
 C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\Contents.API.genruntimeconfig.cache
 C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\obj\Debug\net6.0\ref\Contents.API.dll
+C:\Repositorios\TPI\TP-Prog3 - piola\TPI-PROG3-G1\InformacionCiudades.API\bin\Debug\net6.0\Newtonsoft.Json.dll

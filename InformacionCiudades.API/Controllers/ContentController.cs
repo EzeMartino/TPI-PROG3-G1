@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+
+using Newtonsoft.Json.Linq;
+
 using Contents.API.Entities;
 using Contents.API.Models;
 using Contents.API.Services;
@@ -92,6 +95,17 @@ namespace Contents.API.Controllers
             _contentRepository.SaveChanges();
 
             return NoContent();
+        }
+
+        [HttpGet("GetUserTime")]
+        public ActionResult GetUsedTime(int idUser)
+        {
+            if (!_contentRepository.UserExists(idUser))
+                return NotFound();
+
+            int time = _contentRepository.UsedTime(idUser);
+
+            return Ok($"Usted ha utilizado {time} minutos en ver contenido");
         }
     }
 }

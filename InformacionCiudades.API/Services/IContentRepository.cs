@@ -24,7 +24,7 @@ namespace Contents.API.Services
 
         public bool ContentExists(int idContent);
         public User? ValidateCredentials(string username, string password);
-
+        public int UsedTime(int userId);
     }
 
 }
