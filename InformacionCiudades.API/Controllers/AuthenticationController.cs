@@ -1,4 +1,5 @@
 ﻿using Contents.API.Entities;
+using Contents.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,6 +13,7 @@ namespace Contents.API.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IConfiguration _config;
+        private readonly IContentRepository _contentRepository;
 
         public class AuthenticationRequestBody
         {
@@ -19,21 +21,24 @@ namespace Contents.API.Controllers
             public string? Password { get; set; }
         }
 
-        public AuthenticationController(IConfiguration config)
+        public AuthenticationController(IConfiguration config, IContentRepository contentRepository)
         {
             _config = config; //Hacemos la inyección para poder usar el appsettings.json
+            _contentRepository = contentRepository;
         }
 
         [HttpPost("authenticate")]
         public ActionResult<string> Authenticate(AuthenticationRequestBody authenticationRequestBody)
         {
-            //Paso 1: Validamos las credenciales
-            var user = ValidarCredenciales(authenticationRequestBody.Username, authenticationRequestBody.Password); //Lo primero que hacemos es llamar a una función que valide los parámetros que enviamos.
+            if (authenticationRequestBody.Username == null || authenticationRequestBody.Password == null)
+                return BadRequest();
+
+            var user = _contentRepository.ValidateCredentials(authenticationRequestBody.Username, authenticationRequestBody.Password); //Lo primero que hacemos es llamar a una función que valide los parámetros que enviamos.
 
             if (user is null)
                 return Unauthorized();
 
-            //Paso 2: Crear el token
+            //Crear el token
             var claveDeSeguridad = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config["Authentication:SecretForKey"])); //Traemos la SecretKey del Json. agregar antes: using Microsoft.IdentityModel.Tokens;
 
             var credenciales = new SigningCredentials(claveDeSeguridad, SecurityAlgorithms.HmacSha256);
@@ -58,11 +63,5 @@ namespace Contents.API.Controllers
 
             return Ok(tokenToReturn);
         }
-        private User ValidarCredenciales(string? userName, string? password)
-        {
-            
-            return new User("tomisacripanti", "TomasSacripanti987", "sacripantitomas@gmail.com");
-        }
-
     }
 }

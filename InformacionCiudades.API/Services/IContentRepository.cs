@@ -23,6 +23,7 @@ namespace Contents.API.Services
         public Content? GetContentInUser(int idUser, int idContent);
 
         public bool ContentExists(int idContent);
+        public User? ValidateCredentials(string username, string password);
 
     }
 

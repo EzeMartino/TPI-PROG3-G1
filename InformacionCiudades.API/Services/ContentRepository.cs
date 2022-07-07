@@ -93,5 +93,9 @@ namespace Contents.API.Services
         {
             return _context.Contents.Any(c => c.Id == idContent);
         }
+        public User? ValidateCredentials(string username, string password)
+        {
+            return _context.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
+        }
     }
 }
