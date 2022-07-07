@@ -30,6 +30,9 @@ namespace Contents.API.Controllers
         {
             var newUser = _mapper.Map<User>(user);
 
+            if (_contentRepository.UserNameExists(newUser.Username))
+                return BadRequest("Nombre de usuario ya existe");
+
             _contentRepository.CreateUser(newUser);
             _contentRepository.SaveChanges();
 

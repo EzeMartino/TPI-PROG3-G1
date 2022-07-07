@@ -75,6 +75,11 @@ namespace Contents.API.Services
             return _context.Users.Any(c => c.Id == idUser);
         }
 
+        public bool UserNameExists(string username)
+        {
+            return _context.Users.Any(c => c.Username == username);
+        }
+
         public void AddContentToUser(int idUser, Content content)
         {
             var user = GetUser(idUser);
