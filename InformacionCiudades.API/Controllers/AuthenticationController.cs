@@ -7,13 +7,13 @@ using System.Text;
 
 namespace Contents.API.Controllers
 {
-    [Route("api/authentication")] //Especificamos un path de login
+    [Route("api/authentication")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
         private readonly IConfiguration _config;
 
-        public class AuthenticationRequestBody // Esta clase podría estar en un archivo aparte, pero como no es una entidad ni un DTO y solo se usa para el login podemos dejarla acá.
+        public class AuthenticationRequestBody
         {
             public string? Username { get; set; }
             public string? Password { get; set; }
@@ -24,13 +24,13 @@ namespace Contents.API.Controllers
             _config = config; //Hacemos la inyección para poder usar el appsettings.json
         }
 
-        [HttpPost("authenticate")] //Vamos a usar un POST ya que debemos enviar los datos para hacer el login
-        public ActionResult<string> Authenticate(AuthenticationRequestBody authenticationRequestBody) //Enviamos como parámetro la clase que creamos arriba
+        [HttpPost("authenticate")]
+        public ActionResult<string> Authenticate(AuthenticationRequestBody authenticationRequestBody)
         {
             //Paso 1: Validamos las credenciales
             var user = ValidarCredenciales(authenticationRequestBody.Username, authenticationRequestBody.Password); //Lo primero que hacemos es llamar a una función que valide los parámetros que enviamos.
 
-            if (user is null) //Si el la función de arriba no devuelve nada es porque los datos son incorrectos, por lo que devolvemos un Unauthorized (un status code 401).
+            if (user is null)
                 return Unauthorized();
 
             //Paso 2: Crear el token
@@ -58,16 +58,9 @@ namespace Contents.API.Controllers
 
             return Ok(tokenToReturn);
         }
-
-        //[HttpPost]
-        //public ActionResult<string> CreateUser(string username, string password, string email)
-        //{
-
-        //}
-
         private User ValidarCredenciales(string? userName, string? password)
         {
-            // Acá devolvemos un usuario nuevo independientemente de lo que mande el usuario a fines ilustrativos. Acá deberíamos ir a la base de datos y verificar que el usuario existe y que la password es correcta.
+            
             return new User("tomisacripanti", "TomasSacripanti987", "sacripantitomas@gmail.com");
         }
 

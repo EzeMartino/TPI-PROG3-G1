@@ -29,27 +29,14 @@ namespace Contents.API.Controllers
             return Ok(_mapper.Map<IEnumerable<UserWithoutContentsDto>>(users));
         }
 
-        [HttpGet("{id}", Name = "GetUser")]
-        public IActionResult GetUser(int id) //Ahora devolvemos un IActionResult para que sea más genérico, ya que ahora podemos devolver CiudadDto o CiudadSinPuntosDeInteresDto
+        [HttpGet("{id}")]
+        public IActionResult GetUser(int id)
         {
             var user = _contentRepository.GetUser(id);
             if (user == null)
                 return NotFound();
 
             return Ok(_mapper.Map<UserDto>(user));
-        }
-
-        [HttpPost]
-        public ActionResult<UserDto> CreateUser(UserCreationDto user)
-        {
-            var newUser = _mapper.Map<User>(user);
-
-            _contentRepository.CreateUser(newUser);
-            _contentRepository.SaveChanges();
-
-            var userToReturn = _mapper.Map<UserDto>(newUser);
-
-            return CreatedAtRoute("GetUser", new { id = newUser.Id }, userToReturn);
         }
 
         [HttpPut("{idUser}")]
