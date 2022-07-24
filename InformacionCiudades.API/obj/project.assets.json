@@ -1868,19 +1868,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ezeqf\\.nuget\\packages\\": {}
+    "C:\\Users\\josem\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repositorios\\TPI\\TP-Prog3 - piola\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
+      "projectUniqueName": "E:\\TUP\\2do\\PROG3\\Nueva carpeta\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
       "projectName": "Contents.API",
-      "projectPath": "C:\\Repositorios\\TPI\\TP-Prog3 - piola\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
-      "packagesPath": "C:\\Users\\ezeqf\\.nuget\\packages\\",
-      "outputPath": "C:\\Repositorios\\TPI\\TP-Prog3 - piola\\TPI-PROG3-G1\\InformacionCiudades.API\\obj\\",
+      "projectPath": "E:\\TUP\\2do\\PROG3\\Nueva carpeta\\TPI-PROG3-G1\\InformacionCiudades.API\\Contents.API.csproj",
+      "packagesPath": "C:\\Users\\josem\\.nuget\\packages\\",
+      "outputPath": "E:\\TUP\\2do\\PROG3\\Nueva carpeta\\TPI-PROG3-G1\\InformacionCiudades.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ezeqf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\josem\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1967,7 +1967,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
