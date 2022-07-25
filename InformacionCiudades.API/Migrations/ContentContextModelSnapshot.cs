@@ -26,11 +26,6 @@ namespace Contents.API.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Duration")
                         .HasColumnType("INTEGER");
 
@@ -48,7 +43,6 @@ namespace Contents.API.Migrations
                         {
                             Id = 1,
                             Category = "Category 1",
-                            Comment = "Comment 1",
                             Duration = 12,
                             Title = "Title 1"
                         },
@@ -56,7 +50,6 @@ namespace Contents.API.Migrations
                         {
                             Id = 2,
                             Category = "Category 2",
-                            Comment = "Comment 2",
                             Duration = 12,
                             Title = "Title 2"
                         },
@@ -64,7 +57,6 @@ namespace Contents.API.Migrations
                         {
                             Id = 3,
                             Category = "Category 3",
-                            Comment = "Comment 3",
                             Duration = 12,
                             Title = "Title 3"
                         });
@@ -118,6 +110,45 @@ namespace Contents.API.Migrations
                             Username = "User 3"
                         });
                 });
+            modelBuilder.Entity("Contents.API.Entities.Review", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("INTEGER");
+
+                b.Property<string>("Comment")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("TEXT");
+
+                b.HasKey("Id");
+
+                b.ToTable("Reviews", (string)null);
+
+                b.HasData(
+                    new
+                    {
+                        Id = 1,
+                        Comment = "Comment 1",
+                        Title = "Title 1"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Comment = "Comment 2",
+                        Title = "Title 2"
+                    },
+                    new
+                    {
+                        Id = 3,
+                        Comment = "Comment 3",
+                        Title = "Title 3"
+                    });
+            });
 #pragma warning restore 612, 618
         }
     }

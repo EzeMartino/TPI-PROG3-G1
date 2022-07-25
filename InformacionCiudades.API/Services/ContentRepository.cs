@@ -32,7 +32,7 @@ namespace Contents.API.Services
         {
             if (GetUser(idUser) == null)
             {
-                throw new ArgumentException("Content nof found");
+                throw new ArgumentException("Content not found");
             }
             else
             {
@@ -65,11 +65,12 @@ namespace Contents.API.Services
         public void DeleteContent(int idContent)
         {
             if (GetContent(idContent) == null)
-                throw new ArgumentException("Content nof found");
+                throw new ArgumentException("Content not found");
 
             _context.Contents.Remove(GetContent(idContent));
 
         }
+
         public bool UserExists(int idUser)
         {
             return _context.Users.Any(c => c.Id == idUser);
@@ -83,7 +84,7 @@ namespace Contents.API.Services
         public void AddContentToUser(int idUser, Content content)
         {
             var user = GetUser(idUser);
-            if(user != null)
+            if (user != null)
             {
                 user.Contents.Add(content);
             }
@@ -110,7 +111,7 @@ namespace Contents.API.Services
 
             int usedTime = 0;
 
-            foreach(Content c in ContentConsumed)
+            foreach (Content c in ContentConsumed)
             {
                 switch (c.Category)
                 {
@@ -130,5 +131,42 @@ namespace Contents.API.Services
             }
             return usedTime;
         }
+        public void DeleteReview(int idReview)
+        {
+            if (GetReview(idReview) == null)
+                throw new ArgumentException("Review not found");
+
+            _context.Reviews.Remove(GetReview(idReview));
+        }
+        public void AddReviewToContent(int idContent, Review review)
+        {
+            var content = GetContent(idContent);
+            if (content != null)
+            {
+                content.Reviews.Add(review);
+            }
+        }
+        public Review? GetReview(int idReview)
+        {
+            return _context.Reviews.Where(c => c.Id == idReview).FirstOrDefault();
+        }
+
+        public IEnumerable<Review> GetReviews()
+        {
+            return _context.Reviews.OrderBy(x => x.Title).ToList();
+        }
+        public Review? GetReviewsInUser(int idUser, int idReview)
+        {
+            return _context.Reviews.Where(c => c.UserId == idUser && c.Id == idReview).FirstOrDefault();
+        }
+        public Review? GetReviewInContent(int idContent, int idReview)
+        {
+            return _context.Reviews.Where(c => c.UserId == idContent && c.Id == idReview).FirstOrDefault();
+        }
+        public bool ReviewExists(int idReview)
+        {
+            return _context.Reviews.Any(c => c.Id == idReview);
+        }
+
     }
 }

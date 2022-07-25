@@ -26,6 +26,14 @@ namespace Contents.API.Services
         public bool ContentExists(int idContent);
         public User? ValidateCredentials(string username, string password);
         public int UsedTime(int userId);
+        public IEnumerable <Review> GetReviews();
+        public Review? GetReview(int idReview);
+        public void AddReviewToContent(int idContent, Review review);
+        public void DeleteReview(int idReview);
+        public Review? GetReviewsInUser(int idUser, int idReview);
+        public Review? GetReviewInContent(int idContent, int idReview);
+        public bool ReviewExists(int idReview);
+
     }
 
 }

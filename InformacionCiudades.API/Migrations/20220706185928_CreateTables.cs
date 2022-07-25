@@ -47,6 +47,27 @@ namespace Contents.API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    Comment = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
+                    ContentId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Contents_ContentId",
+                        column: x => x.ContentId,
+                        principalTable: "Content",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Password", "Username" },
@@ -64,30 +85,49 @@ namespace Contents.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Contents",
-                columns: new[] { "Id", "Category", "Comment", "Duration", "Rating", "Title", "UserId" },
+                columns: new[] { "Id", "Category", "Duration", "Rating", "Title", "UserId" },
                 values: new object[] { 1, "Category 1", "Comment 1", 12, 5, "Title 1", 1 });
 
             migrationBuilder.InsertData(
                 table: "Contents",
-                columns: new[] { "Id", "Category", "Comment", "Duration", "Rating", "Title", "UserId" },
+                columns: new[] { "Id", "Category", "Duration", "Rating", "Title", "UserId" },
                 values: new object[] { 2, "Category 2", "Comment 2", 12, 6, "Title 2", 2 });
 
             migrationBuilder.InsertData(
                 table: "Contents",
-                columns: new[] { "Id", "Category", "Comment", "Duration", "Rating", "Title", "UserId" },
+                columns: new[] { "Id", "Category", "Duration", "Rating", "Title", "UserId" },
                 values: new object[] { 3, "Category 3", "Comment 3", 12, 7, "Title 3", 3 });
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "Id", "Title", "ContentId" },
+                values: new object[] { 1, "Comment 1", "Title 1", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "Id", "Title", "ContentId" },
+                values: new object[] { 2, "Comment 2","Title 2", 2 });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "Id", "Title", "ContentId" },
+                values: new object[] { 3, "Comment 3", "Title 3", 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contents_UserId",
                 table: "Contents",
                 column: "UserId");
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_ContentId",
+                table: "Reviews",
+                column: "ContentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Contents");
-
+            migrationBuilder.DropTable(
+                name: "Reviews");
             migrationBuilder.DropTable(
                 name: "Users");
         }
