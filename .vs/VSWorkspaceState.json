@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\InformacionCiudades.API",
+    "\\InformacionCiudades.API\\DBContexts",
     "\\InformacionCiudades.API\\Services"
   ],
-  "SelectedNode": "\\Contents.sln",
   "PreviewInSolutionExplorer": false
 }
