@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Contents.API.Entities
 {
     public class Content
-    {//test git
+    {
         [Key] //Esto es opcional si se sigue la convención
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //También por convención no hace falta. Identity genera un nuevo Id por cada creación.
         public int Id { get; set; }
@@ -28,12 +28,12 @@ namespace Contents.API.Entities
         public User? User { get; set; }
         
         public int UserId { get; set; }
+        public List<Review> Reviews { get; set; } = new List<Review>();
 
-        public Content(string title, int duration, string comment, string category, int rating)
+        public Content(string title, int duration, string category, int rating)
         {
             Title = title.Trim();
             Duration = duration;
-            Comment = comment;
             Category = category;
             Rating = rating;
         }
